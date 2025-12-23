@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Savings & Loan Cooperative</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="logo-section">
+                <div class="logo-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <div class="logo-text">
+                    Online Savings & Loan Cooperative<br>
+                    <div class="welcome-text">
+                         Welcome <span class="welcome-name" id="memberName">John Doe</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="header-actions">
+                <button class="notification-btn">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge">3</span>
+                </button>
+                <button class="profile-btn" id="profileToggle">
+                    <i class="fas fa-user-circle"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-layout">
+        <!-- Left Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <button class="sidebar-close" id="sidebarClose">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="nav-title">Main Menu</div>
+            <nav>
+                <button type="button" class="nav-item active"
+                    data-page="pages/dashboard-home.html"
+                    aria-label="Open Dashboard"
+                    aria-current="page"
+                    title="Dashboard">
+                    <i class="fas fa-chart-line nav-icon" aria-hidden="true"></i>
+                    <span class="nav-text">Dashboard</span>
+                </button>
+
+                <button type="button" class="nav-item" data-page="pages/save.html">
+                    <i class="fas fa-piggy-bank nav-icon"></i>
+                    <span>Savings Account</span>
+                </button>
+
+                <button type="button" class="nav-item" data-page="pages/loan.html">
+                    <i class="fas fa-landmark nav-icon"></i>
+                    <span>Loans</span>
+                </button>
+
+                <button type="button" class="nav-item" data-page="pages/transactions.html">
+                    <i class="fas fa-exchange-alt nav-icon"></i>
+                    <span>Transactions</span>
+                </button>
+
+                <button type="button" class="nav-item" data-page="pages/settings.html">
+                    <i class="fas fa-cog nav-icon"></i>
+                    <span>Settings</span>
+                </button>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content" id="mainContent">
+            <!-- Content will be loaded here -->
+        </main>
+    </div>
+
+    <!-- Profile Panel -->
+    <div class="profile-overlay" id="profileOverlay"></div>
+    <aside class="profile-panel" id="profilePanel">
+        <div class="profile-header">
+            <div class="profile-title">My Profile</div>
+            <button class="profile-close" id="profileClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="profile-content">
+            <div class="profile-card">
+                <div class="profile-name">John Doe</div>
+            </div>
+            
+            <div class="info-section">
+                <div class="info-title">Account Status</div>
+                <div class="info-item">
+                    <span class="info-label">Status</span>
+                    <span class="info-value status-completed">Active</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Member Since</span>
+                    <span class="info-value">Jan 15, 2021</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Last Login</span>
+                    <span class="info-value">Today, 10:30 AM</span>
+                </div>
+            </div>
+            
+            <button class="logout-btn" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </div>
+    </aside>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sidebar toggle
+            const menuToggle = document.getElementById('menuToggle');
+            const sidebar = document.getElementById('sidebar');
+            const sidebarClose = document.getElementById('sidebarClose');
+            const profileToggle = document.getElementById('profileToggle');
+            
+            // Mobile detection
+            function isMobile() {
+                return window.innerWidth <= 768;
+            }
+            
+            // Initialize sidebar
+            function initSidebar() {
+                if (!isMobile()) {
+                    sidebar.style.left = '0';
+                    menuToggle.style.display = 'none';
+                } else {
+                    sidebar.style.left = '-250px';
+                    menuToggle.style.display = 'flex';
+                }
+            }
+            
+            // Toggle sidebar
+            menuToggle.addEventListener('click', function() {
+                if (isMobile()) {
+                    sidebar.classList.toggle('active');
+                    if (sidebar.classList.contains('active')) {
+                        sidebar.style.left = '0';
+                    } else {
+                        sidebar.style.left = '-250px';
+                    }
+                }
+            });
+            
+            // Close sidebar
+            sidebarClose.addEventListener('click', function() {
+                if (isMobile()) {
+                    sidebar.classList.remove('active');
+                    sidebar.style.left = '-250px';
+                }
+            });
+            
+            // Close sidebar when clicking outside on mobile
+            document.addEventListener('click', function(e) {
+                if (isMobile() && 
+                    sidebar.classList.contains('active') &&
+                    !sidebar.contains(e.target) &&
+                    !menuToggle.contains(e.target)) {
+                    
+                    sidebar.classList.remove('active');
+                    sidebar.style.left = '-250px';
+                }
+            });
+            
+            // Date filter buttons
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // Navigation items
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    navItems.forEach(nav => nav.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Close sidebar on mobile after click
+                    if (isMobile()) {
+                        setTimeout(() => {
+                            sidebar.classList.remove('active');
+                            sidebar.style.left = '-250px';
+                        }, 300);
+                    }
+                });
+            });
+            
+            // Initialize
+            initSidebar();
+            window.addEventListener('resize', initSidebar);
+            
+            console.log('Savings page loaded');
+        });
+        
+        // Action button functions
+        function openDepositModal() {
+            alert('Deposit form would open here.\nIn a real app, this would show a modal with deposit form.');
+        }
+        
+        function openWithdrawModal() {
+            alert('Withdrawal request form would open here.\nIn a real app, this would show a modal with withdrawal form.');
+        }
+        
+        function openTransferModal() {
+            alert('Transfer funds form would open here.\nIn a real app, this would show a modal with transfer form.');
+        }
+        
+        function downloadStatement() {
+            alert('Statement download would start here.\nIn a real app, this would generate a PDF statement.');
+        }
+    </script>
+    <script>
+        // Loan page specific JavaScript
+        function applyForLoan() {
+            alert('Loan application form would open here.\nIn a real app, this would show a loan application form.');
+        }
+        
+        function makePayment() {
+            alert('Loan payment form would open here.\nIn a real app, this would show a payment form.');
+        }
+        
+        function viewSchedule() {
+            alert('Payment schedule would display here.\nIn a real app, this would show a repayment calendar.');
+        }
+        
+        function downloadLoanStatement() {
+            alert('Loan statement would download here.\nIn a real app, this would generate a PDF statement.');
+        }
+    </script>
+    <script>
+        // Transaction page specific JavaScript
+        let currentFilter = 'all';
+        
+        function filterByType(type) {
+            currentFilter = type;
+            const rows = document.querySelectorAll('#transactionsTable tr');
+            const filterButtons = document.querySelectorAll('.action-btn');
+            
+            // Update active button
+            filterButtons.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.onclick && btn.onclick.toString().includes(type)) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Filter rows
+            rows.forEach(row => {
+                if (type === 'all') {
+                    row.style.display = '';
+                } else {
+                    const typeClass = row.querySelector('.transaction-type');
+                    if (typeClass && typeClass.classList.contains(`type-${type}`)) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                }
+            });
+            
+            // Update count
+            const visibleRows = Array.from(rows).filter(row => row.style.display !== 'none');
+            document.querySelector('.section-title + div').textContent = 
+                `Showing ${visibleRows.length} of 247 transactions`;
+        }
+        
+        function exportTransactions() {
+            const format = prompt('Export format:\n1. CSV\n2. PDF\n3. Excel\n\nEnter choice (1-3):');
+            if (format) {
+                let fileType = '';
+                switch(format) {
+                    case '1': fileType = 'CSV'; break;
+                    case '2': fileType = 'PDF'; break;
+                    case '3': fileType = 'Excel'; break;
+                    default: fileType = 'CSV';
+                }
+                alert(`Exporting transactions as ${fileType} file...\nIn a real app, this would generate and download the file.`);
+            }
+        }
+        
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const rows = document.querySelectorAll('#transactionsTable tr');
+            
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+        
+        // Filter by account
+        document.getElementById('accountFilter').addEventListener('change', function(e) {
+            const selectedAccount = e.target.value;
+            const rows = document.querySelectorAll('#transactionsTable tr');
+            
+            rows.forEach(row => {
+                const accountCell = row.querySelector('td:nth-child(3)');
+                if (accountCell) {
+                    const accountText = accountCell.textContent;
+                    if (!selectedAccount || accountText.includes(selectedAccount)) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                }
+            });
+        });
+        
+        // Filter by status
+        document.getElementById('statusFilter').addEventListener('change', function(e) {
+            const selectedStatus = e.target.value;
+            const rows = document.querySelectorAll('#transactionsTable tr');
+            
+            rows.forEach(row => {
+                const statusCell = row.querySelector('.transaction-status');
+                if (statusCell) {
+                    const statusText = statusCell.textContent.toLowerCase();
+                    if (!selectedStatus || statusText.includes(selectedStatus)) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                }
+            });
+        });
+        
+        // Date filter buttons
+        document.querySelectorAll('.date-filter .filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.date-filter .filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                // In real app, this would filter transactions by date
+                const period = this.textContent;
+                alert(`Filtering transactions for: ${period}\nIn a real app, this would load transactions for the selected period.`);
+            });
+        });
+        
+        console.log('Transaction page loaded');
+    </script>
+    <script>
+// Profile Functions
+function saveProfile() {
+    const firstName = document.getElementById('firstName').value;
+    const lastName = document.getElementById('lastName').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+    const address = document.getElementById('address').value;
+    
+    // Validate inputs
+    if (!firstName || !lastName || !email) {
+        alert('Please fill in all required fields');
+        return;
+    }
+    
+    if (!validateEmail(email)) {
+        alert('Please enter a valid email address');
+        return;
+    }
+    
+    // Show loading
+    const saveBtn = document.querySelector('.btn-save');
+    const originalText = saveBtn.innerHTML;
+    saveBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
+    saveBtn.disabled = true;
+    
+    // Simulate API call
+    setTimeout(() => {
+        alert('Profile updated successfully!');
+        saveBtn.innerHTML = originalText;
+        saveBtn.disabled = false;
+        
+        // Update welcome name if changed
+        const welcomeName = document.querySelector('.welcome-name');
+        if (welcomeName) {
+            welcomeName.textContent = `${firstName} ${lastName}`;
+        }
+    }, 1000);
+}
+
+function changeAvatar() {
+    alert('Avatar change feature would open here');
+    // In real implementation, this would open a file picker
+}
+
+// Password Functions
+function changePassword() {
+    const currentPass = document.getElementById('currentPassword').value;
+    const newPass = document.getElementById('newPassword').value;
+    const confirmPass = document.getElementById('confirmPassword').value;
+    
+    if (!currentPass || !newPass || !confirmPass) {
+        alert('Please fill in all password fields');
+        return;
+    }
+    
+    if (newPass !== confirmPass) {
+        alert('New passwords do not match');
+        return;
+    }
+    
+    if (newPass.length < 8) {
+        alert('Password must be at least 8 characters long');
+        return;
+    }
+    
+    // Show loading
+    const saveBtn = document.querySelectorAll('.btn-save')[1];
+    const originalText = saveBtn.innerHTML;
+    saveBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Updating...';
+    saveBtn.disabled = true;
+    
+    // Simulate API call
+    setTimeout(() => {
+        alert('Password changed successfully!');
+        saveBtn.innerHTML = originalText;
+        saveBtn.disabled = false;
+        
+        // Clear password fields
+        document.getElementById('currentPassword').value = '';
+        document.getElementById('newPassword').value = '';
+        document.getElementById('confirmPassword').value = '';
+    }, 1000);
+}
+
+// Utility Functions
+function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+}
+
+function downloadData() {
+    alert('Downloading your account data...');
+    // In real implementation, this would generate and download a file
+}
+
+function exportTransactions() {
+    alert('Exporting transaction history...');
+    // In real implementation, this would generate and download CSV/PDF
+}
+
+function deleteAccount() {
+    if (confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
+        const confirmText = prompt('Type "DELETE" to confirm account deletion:');
+        if (confirmText === 'DELETE') {
+            alert('Account deletion requested. You will receive a confirmation email.');
+        }
+    }
+}
+
+// Initialize settings page
+function initSettingsPage() {
+    console.log('Settings page initialized');
+    
+    // Password strength indicator
+    const newPassInput = document.getElementById('newPassword');
+    if (newPassInput) {
+        newPassInput.addEventListener('input', function() {
+            updatePasswordStrength(this.value);
+        });
+    }
+    
+    // Toggle switches
+    const switches = document.querySelectorAll('.switch input');
+    switches.forEach(sw => {
+        sw.addEventListener('change', function() {
+            console.log(`${this.id} changed to: ${this.checked}`);
+            // Save preference to localStorage
+            localStorage.setItem(this.id, this.checked);
+        });
+        
+        // Load saved preferences
+        const saved = localStorage.getItem(sw.id);
+        if (saved !== null) {
+            sw.checked = saved === 'true';
+        }
+    });
+}
+
+function updatePasswordStrength(password) {
+    const strengthBar = document.querySelector('.strength-bar');
+    const strengthText = document.querySelector('.strength-text');
+    
+    if (!password) {
+        strengthBar.style.width = '0%';
+        strengthBar.style.background = '#e5e7eb';
+        strengthText.textContent = 'Password strength';
+        return;
+    }
+    
+    let strength = 0;
+    if (password.length >= 8) strength++;
+    if (/[A-Z]/.test(password)) strength++;
+    if (/[0-9]/.test(password)) strength++;
+    if (/[^A-Za-z0-9]/.test(password)) strength++;
+    
+    const width = (strength / 4) * 100;
+    strengthBar.style.width = `${width}%`;
+    
+    if (strength === 0) {
+        strengthBar.style.background = '#ef4444';
+        strengthText.textContent = 'Very Weak';
+    } else if (strength === 1) {
+        strengthBar.style.background = '#f97316';
+        strengthText.textContent = 'Weak';
+    } else if (strength === 2) {
+        strengthBar.style.background = '#eab308';
+        strengthText.textContent = 'Fair';
+    } else if (strength === 3) {
+        strengthBar.style.background = '#22c55e';
+        strengthText.textContent = 'Good';
+    } else {
+        strengthBar.style.background = '#16a34a';
+        strengthText.textContent = 'Strong';
+    }
+}
+
+// Call this when settings page loads
+document.addEventListener('DOMContentLoaded', initSettingsPage);
+    </script>
+</body>
+</html>

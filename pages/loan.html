@@ -1,0 +1,1062 @@
+            <!-- Page Header -->
+            <div class="page-header">
+                <div class="page-title">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <span>Loan Management</span>
+                </div>
+            </div>
+
+            <!-- Summary Cards -->
+            <div class="summary-cards">
+                <div class="summary-card balance-card">
+                    <div class="card-header">
+                        <div class="card-title">Total Loan Balance</div>
+                        <div class="card-icon">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                        </div>
+                    </div>
+                    <div class="card-value">25,000ETB</div>
+                    <div class="card-subtitle">From 2 active loans</div>
+                </div>
+                
+                <div class="summary-card interest-card">
+                    <div class="card-header">
+                        <div class="card-title">Monthly Payment Due</div>
+                        <div class="card-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                    </div>
+                    <div class="card-value">1,500ETB</div>
+                    <div class="card-subtitle">Next due: Nov 15, 2023</div>
+                </div>
+                
+                <div class="summary-card accounts-card">
+                    <div class="card-header">
+                        <div class="card-title">Available Credit</div>
+                        <div class="card-icon">
+                            <i class="fas fa-university"></i>
+                        </div>
+                    </div>
+                    <div class="card-value">50,000ETB</div>
+                    <div class="card-subtitle">Maximum loan limit</div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <h2 class="section-title">
+                    <i class="fas fa-bolt"></i>
+                    Quick Actions
+                </h2>
+                <div class="action-buttons">
+                    <button class="action-btn apply-btn" onclick="applyForLoan()">
+                        <div class="action-icon" style="background: #d1fae5; color: var(--success);">
+                            <i class="fas fa-file-signature"></i>
+                        </div>
+                        <div class="action-text">
+                            <div class="action-title">Apply for Loan</div>
+                            <div class="action-desc">Submit new loan application</div>
+                        </div>
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    
+                    <button class="action-btn payment-btn" onclick="makePayment()">
+                        <div class="action-icon" style="background: #dbeafe; color: var(--primary-blue);">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <div class="action-text">
+                            <div class="action-title">Make Payment</div>
+                            <div class="action-desc">Pay loan installment</div>
+                        </div>
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    
+                    <button class="action-btn schedule-btn" onclick="viewSchedule()">
+                        <div class="action-icon" style="background: #fef3c7; color: var(--warning);">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="action-text">
+                            <div class="action-title">Payment Schedule</div>
+                            <div class="action-desc">View repayment timeline</div>
+                        </div>
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Active Loans -->
+            <div class="accounts-section">
+                <h2 class="section-title">
+                    <i class="fas fa-list-alt"></i>
+                    Active Loans
+                </h2>
+                <div class="accounts-grid">
+                    <div class="account-card">
+                        <div class="account-info">
+                            <div class="account-name">
+                                <i class="fas fa-home"></i>
+                                Home Improvement Loan
+                                <span class="account-status status-active">Active</span>
+                            </div>
+                            <div class="account-details">
+                                <div class="detail-item">
+                                    <span class="detail-label">Loan No:</span>
+                                    <span class="detail-value">LN-2023-001</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Interest Rate:</span>
+                                    <span class="detail-value">8.5% p.a.</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Disbursed:</span>
+                                    <span class="detail-value">Jun 15, 2023</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Term:</span>
+                                    <span class="detail-value">24 months</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="account-balance">15,000ETB</div>
+                    </div>
+                    
+                    <div class="account-card">
+                        <div class="account-info">
+                            <div class="account-name">
+                                <i class="fas fa-car"></i>
+                                Vehicle Loan
+                                <span class="account-status status-active">Active</span>
+                            </div>
+                            <div class="account-details">
+                                <div class="detail-item">
+                                    <span class="detail-label">Loan No:</span>
+                                    <span class="detail-value">LN-2023-002</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Interest Rate:</span>
+                                    <span class="detail-value">10.2% p.a.</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Disbursed:</span>
+                                    <span class="detail-value">Aug 10, 2023</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Term:</span>
+                                    <span class="detail-value">36 months</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="account-balance">10,000ETB</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loan Applications -->
+            <div class="accounts-section">
+                <h2 class="section-title">
+                    <i class="fas fa-clipboard-list"></i>
+                    Loan Applications
+                </h2>
+                <div class="accounts-grid">
+                    <div class="account-card">
+                        <div class="account-info">
+                            <div class="account-name">
+                                <i class="fas fa-briefcase-medical"></i>
+                                Emergency Medical Loan
+                                <span class="account-status" style="background: #fef3c7; color: var(--warning);">Pending</span>
+                            </div>
+                            <div class="account-details">
+                                <div class="detail-item">
+                                    <span class="detail-label">Amount:</span>
+                                    <span class="detail-value">20,000ETB</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Applied:</span>
+                                    <span class="detail-value">Oct 25, 2023</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Status:</span>
+                                    <span class="detail-value">Under Review</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="account-balance" style="font-size: 1rem; color: var(--warning);">Awaiting Approval</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Payments -->
+            <div class="transactions-section">
+                <h2 class="section-title">
+                    <i class="fas fa-history"></i>
+                    Recent Loan Payments
+                </h2>
+                <div class="table-container">
+                    <table class="transactions-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Loan Account</th>
+                                <th>Description</th>
+                                <th>Amount</th>
+                                <th>Balance After</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Oct 15, 2023</td>
+                                <td>LN-2023-001</td>
+                                <td class="transaction-type type-deposit">
+                                    <div class="type-icon">
+                                        <i class="fas fa-money-check-alt"></i>
+                                    </div>
+                                    <span>Monthly Installment</span>
+                                </td>
+                                <td class="transaction-amount amount-negative">-750ETB</td>
+                                <td>15,000ETB</td>
+                                <td><span class="transaction-status status-completed">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td>Oct 10, 2023</td>
+                                <td>LN-2023-002</td>
+                                <td class="transaction-type type-deposit">
+                                    <div class="type-icon">
+                                        <i class="fas fa-money-check-alt"></i>
+                                    </div>
+                                    <span>Monthly Installment</span>
+                                </td>
+                                <td class="transaction-amount amount-negative">-450ETB</td>
+                                <td>10,000ETB</td>
+                                <td><span class="transaction-status status-completed">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td>Sep 15, 2023</td>
+                                <td>LN-2023-001</td>
+                                <td class="transaction-type type-deposit">
+                                    <div class="type-icon">
+                                        <i class="fas fa-money-check-alt"></i>
+                                    </div>
+                                    <span>Monthly Installment</span>
+                                </td>
+                                <td class="transaction-amount amount-negative">-750ETB</td>
+                                <td>15,750ETB</td>
+                                <td><span class="transaction-status status-completed">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td>Sep 10, 2023</td>
+                                <td>LN-2023-002</td>
+                                <td class="transaction-type type-deposit">
+                                    <div class="type-icon">
+                                        <i class="fas fa-money-check-alt"></i>
+                                    </div>
+                                    <span>Monthly Installment</span>
+                                </td>
+                                <td class="transaction-amount amount-negative">-450ETB</td>
+                                <td>10,450ETB</td>
+                                <td><span class="transaction-status status-completed">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td>Aug 15, 2023</td>
+                                <td>LN-2023-001</td>
+                                <td class="transaction-type type-deposit">
+                                    <div class="type-icon">
+                                        <i class="fas fa-money-check-alt"></i>
+                                    </div>
+                                    <span>Loan Disbursement</span>
+                                </td>
+                                <td class="transaction-amount amount-positive">+15,000ETB</td>
+                                <td>15,000ETB</td>
+                                <td><span class="transaction-status status-completed">Completed</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+   <style>
+    :root {
+        --primary-blue: #2563eb;
+        --primary-dark: #1e40af;
+        --primary-light: #dbeafe;
+        --success: #059669;
+        --warning: #d97706;
+        --danger: #dc2626;
+        --gray-50: #f9fafb;
+        --gray-100: #f3f4f6;
+        --gray-200: #e5e7eb;
+        --gray-300: #d1d5db;
+        --gray-600: #4b5563;
+        --gray-800: #1f2937;
+        --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s ease;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+        background-color: var(--gray-50);
+        color: var(--gray-800);
+        min-height: 100vh;
+    }
+
+    /* Header */
+    .header {
+        background: white;
+        border-bottom: 1px solid var(--gray-200);
+        padding: 1rem 1.5rem;
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        box-shadow: var(--shadow);
+    }
+
+    .header-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.5rem;
+    }
+
+    .menu-toggle {
+        background: none;
+        border: none;
+        font-size: 1.25rem;
+        color: var(--gray-600);
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    @media (min-width: 769px) {
+        .menu-toggle {
+            display: none !important;
+        }
+    }
+
+    .logo-section {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .logo-icon {
+        color: var(--primary-blue);
+        font-size: 1.5rem;
+    }
+
+    .logo-text {
+        font-weight: 700;
+        font-size: 1.25rem;
+        color: var(--gray-800);
+    }
+
+    .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .notification-btn, .profile-btn {
+        background: none;
+        border: none;
+        font-size: 1.25rem;
+        color: var(--gray-600);
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 50%;
+    }
+
+    .notification-badge {
+        position: absolute;
+        top: 3px;
+        right: 3px;
+        background: var(--danger);
+        color: white;
+        font-size: 0.7rem;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .welcome-text {
+        font-size: 0.95rem;
+        color: var(--gray-600);
+        padding-left: 0.5rem;
+    }
+
+    .welcome-name {
+        font-weight: 600;
+        color: var(--primary-blue);
+    }
+
+    /* Main Layout */
+    .dashboard-container {
+        display: flex;
+        min-height: calc(100vh - 90px);
+    }
+
+    /* Sidebar */
+    .sidebar {
+        width: 250px;
+        background: white;
+        border-right: 1px solid var(--gray-200);
+        padding: 1.5rem 0;
+        transition: var(--transition);
+        z-index: 40;
+    }
+
+    @media (max-width: 768px) {
+        .sidebar {
+            position: fixed;
+            left: -250px;
+            top: 0;
+            height: 100vh;
+            z-index: 100;
+        }
+        
+        .sidebar.active {
+            left: 0;
+        }
+        
+        .sidebar-close {
+            display: block !important;
+        }
+    }
+
+    .sidebar-close {
+        display: none;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: var(--gray-600);
+        cursor: pointer;
+    }
+
+    .nav-title {
+        padding: 0 1.5rem 1rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--gray-600);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .nav-item {
+        padding: 0.875rem 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        text-decoration: none;
+        color: var(--gray-600);
+        transition: var(--transition);
+        border-left: 3px solid transparent;
+    }
+
+    .nav-item:hover {
+        background: var(--gray-50);
+        color: var(--gray-800);
+    }
+
+    .nav-item.active {
+        background: var(--primary-light);
+        color: var(--primary-blue);
+        border-left: 3px solid var(--primary-blue);
+    }
+
+    /* Main Content */
+    .main-content {
+        flex: 1;
+        padding: 1.5rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    /* Page Header */
+    .page-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid var(--gray-200);
+    }
+
+    .page-title {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--gray-800);
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .page-title i {
+        color: var(--primary-blue);
+    }
+
+    .date-filter {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .filter-btn {
+        padding: 0.5rem 1rem;
+        background: white;
+        border: 1px solid var(--gray-300);
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.875rem;
+        transition: var(--transition);
+    }
+
+    .filter-btn:hover {
+        background: var(--gray-50);
+    }
+
+    .filter-btn.active {
+        background: var(--primary-blue);
+        color: white;
+        border-color: var(--primary-blue);
+    }
+
+    /* Summary Cards - Loan Specific */
+    .summary-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .summary-card {
+        background: white;
+        border-radius: 10px;
+        padding: 1.5rem;
+        box-shadow: var(--shadow);
+        border: 1px solid var(--gray-200);
+        transition: var(--transition);
+    }
+
+    .summary-card:hover {
+        box-shadow: var(--shadow-md);
+        transform: translateY(-2px);
+    }
+
+    .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        margin-bottom: 1rem;
+    }
+
+    .card-title {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--gray-600);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .card-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+    }
+
+    /* Loan-specific card colors */
+    .balance-card .card-icon {
+        background: #fee2e2;
+        color: var(--danger);
+    }
+
+    .interest-card .card-icon {
+        background: #fef3c7;
+        color: var(--warning);
+    }
+
+    .accounts-card .card-icon {
+        background: #dbeafe;
+        color: var(--primary-blue);
+    }
+
+    .card-value {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--gray-800);
+        margin-bottom: 0.5rem;
+    }
+
+    .card-subtitle {
+        font-size: 0.875rem;
+        color: var(--gray-600);
+    }
+
+    /* Quick Actions - Loan Specific */
+    .quick-actions {
+        background: white;
+        border-radius: 10px;
+        padding: 1.5rem;
+        box-shadow: var(--shadow);
+        margin-bottom: 2rem;
+        border: 1px solid var(--gray-200);
+    }
+
+    .section-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        color: var(--gray-800);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .section-title i {
+        color: var(--primary-blue);
+    }
+
+    .action-buttons {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+
+    .action-btn {
+        padding: 1rem;
+        background: var(--gray-50);
+        border: 1px solid var(--gray-200);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        cursor: pointer;
+        transition: var(--transition);
+        text-decoration: none;
+        color: inherit;
+        border: none;
+        width: 100%;
+        text-align: left;
+    }
+
+    .action-btn:hover {
+        background: var(--primary-light);
+        border-color: var(--primary-blue);
+        transform: translateY(-2px);
+    }
+
+    .action-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.25rem;
+    }
+
+    /* Loan action button colors */
+    .apply-btn .action-icon {
+        background: #d1fae5;
+        color: var(--success);
+    }
+
+    .payment-btn .action-icon {
+        background: #dbeafe;
+        color: var(--primary-blue);
+    }
+
+    .schedule-btn .action-icon {
+        background: #fef3c7;
+        color: var(--warning);
+    }
+
+    .statement-btn .action-icon {
+        background: #fee2e2;
+        color: var(--danger);
+    }
+
+    .action-text {
+        flex: 1;
+    }
+
+    .action-title {
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+    }
+
+    .action-desc {
+        font-size: 0.875rem;
+        color: var(--gray-600);
+    }
+
+    /* Accounts/Loans Section */
+    .accounts-section {
+        background: white;
+        border-radius: 10px;
+        padding: 1.5rem;
+        box-shadow: var(--shadow);
+        margin-bottom: 2rem;
+        border: 1px solid var(--gray-200);
+    }
+
+    .accounts-grid {
+        display: grid;
+        gap: 1rem;
+    }
+
+    .account-card {
+        padding: 1.25rem;
+        border: 1px solid var(--gray-200);
+        border-radius: 8px;
+        transition: var(--transition);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .account-card:hover {
+        border-color: var(--primary-blue);
+        background: var(--gray-50);
+    }
+
+    .account-info {
+        flex: 1;
+    }
+
+    .account-name {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: var(--gray-800);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .account-name i {
+        color: var(--primary-blue);
+        font-size: 0.9rem;
+    }
+
+    .account-details {
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+    }
+
+    .detail-item {
+        font-size: 0.875rem;
+    }
+
+    .detail-label {
+        color: var(--gray-600);
+        margin-right: 0.25rem;
+    }
+
+    .detail-value {
+        font-weight: 600;
+        color: var(--gray-800);
+    }
+
+    .account-balance {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--gray-800);
+        text-align: right;
+        min-width: 120px;
+    }
+
+    /* Loan Status Badges */
+    .account-status {
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        display: inline-block;
+        margin-left: 0.5rem;
+    }
+
+    .status-active {
+        background: #d1fae5;
+        color: var(--success);
+    }
+
+    .status-pending {
+        background: #fef3c7;
+        color: var(--warning);
+    }
+
+    .status-approved {
+        background: #d1fae5;
+        color: var(--success);
+    }
+
+    .status-rejected {
+        background: #fee2e2;
+        color: var(--danger);
+    }
+
+    .status-completed {
+        background: #d1fae5;
+        color: var(--success);
+    }
+
+    /* Transactions/Payments Section */
+    .transactions-section {
+        background: white;
+        border-radius: 10px;
+        padding: 1.5rem;
+        box-shadow: var(--shadow);
+        border: 1px solid var(--gray-200);
+    }
+
+    .table-container {
+        overflow-x: auto;
+    }
+
+    .transactions-table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 600px;
+    }
+
+    .transactions-table th {
+        text-align: left;
+        padding: 1rem;
+        font-weight: 600;
+        color: var(--gray-600);
+        border-bottom: 2px solid var(--gray-200);
+        font-size: 0.875rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .transactions-table td {
+        padding: 1rem;
+        border-bottom: 1px solid var(--gray-200);
+    }
+
+    .transaction-type {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .type-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Loan transaction types */
+    .type-payment .type-icon {
+        background: #d1fae5;
+        color: var(--success);
+    }
+
+    .type-disbursement .type-icon {
+        background: #dbeafe;
+        color: var(--primary-blue);
+    }
+
+    .type-interest .type-icon {
+        background: #fef3c7;
+        color: var(--warning);
+    }
+
+    .type-penalty .type-icon {
+        background: #fee2e2;
+        color: var(--danger);
+    }
+
+    .transaction-amount {
+        font-weight: 600;
+        font-size: 1.1rem;
+    }
+
+    .amount-positive {
+        color: var(--success);
+    }
+
+    .amount-negative {
+        color: var(--danger);
+    }
+
+    .transaction-status {
+        padding: 0.375rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+    }
+
+    /* No Data State */
+    .no-data {
+        text-align: center;
+        padding: 3rem;
+        color: var(--gray-600);
+    }
+
+    .no-data i {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        color: var(--gray-300);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .main-content {
+            padding: 1rem;
+        }
+        
+        .page-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        
+        .date-filter {
+            width: 100%;
+            justify-content: center;
+        }
+        
+        .summary-cards {
+            grid-template-columns: 1fr;
+        }
+        
+        .action-buttons {
+            grid-template-columns: 1fr;
+        }
+        
+        .account-card {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        
+        .account-balance {
+            align-self: flex-end;
+        }
+        
+        .account-details {
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .card-value {
+            font-size: 1.75rem;
+        }
+        
+        .page-title {
+            font-size: 1.5rem;
+        }
+        
+        .header {
+            padding: 0.75rem 1rem;
+        }
+        
+        .logo-text {
+            font-size: 1rem;
+        }
+        
+        .filter-btn {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.8rem;
+        }
+        
+        .section-title {
+            font-size: 1.1rem;
+        }
+        
+        .action-title {
+            font-size: 0.9rem;
+        }
+        
+        .action-desc {
+            font-size: 0.8rem;
+        }
+    }
+
+    /* Loan Calculator (Optional) */
+    .loan-calculator {
+        background: white;
+        border-radius: 10px;
+        padding: 1.5rem;
+        box-shadow: var(--shadow);
+        margin-bottom: 2rem;
+        border: 1px solid var(--gray-200);
+    }
+
+    .calculator-form {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .form-label {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--gray-600);
+    }
+
+    .form-input {
+        padding: 0.75rem;
+        border: 1px solid var(--gray-300);
+        border-radius: 6px;
+        font-size: 1rem;
+        transition: var(--transition);
+    }
+
+    .form-input:focus {
+        outline: none;
+        border-color: var(--primary-blue);
+        box-shadow: 0 0 0 3px var(--primary-light);
+    }
+
+    .calculator-result {
+        background: var(--primary-light);
+        padding: 1rem;
+        border-radius: 6px;
+        margin-top: 1rem;
+        text-align: center;
+    }
+
+    .result-value {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-blue);
+    }
+</style>
